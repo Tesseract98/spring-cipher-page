@@ -3,17 +3,37 @@ package server.dto;
 import server.dto.exceptions.DtoErrorCode;
 import server.dto.exceptions.DtoException;
 
+import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 public class RegistrationDtoResponse {
+
+    @Size(min = 2, message = "Минимальная длина 2 символа")
     private String name;
+
+    @Size(min = 2, message = "Минимальная длина 2 символа")
     private String surname;
+
+    @NotNull
     private String patronymic;
+
+    @Size(min = 5, message = "Минимальная длина 5 символов")
     private String login;
+
+    @Size(min = 6, message = "Минимальная длина 6 символов")
+    @javax.validation.constraints.Pattern(regexp = "(([a-zA-Z]*)([!-@])+([a-zA-Z]*))+", message = "должен содержать хотя бы одну цифру или некоторый специальный символ")
     private String password;
+
+    @NotNull
     private String checkPassword;
+
+    @NotNull
+    private boolean passwordsEqual;
+
     private Pattern pattern;
     private String digitsRegex = ".*\\d+.*";
 
@@ -28,6 +48,15 @@ public class RegistrationDtoResponse {
         this.password = password;
         this.checkPassword = checkPassword;
         pattern = Pattern.compile("(([a-zA-Z]*)(\\d|\\W)+([a-zA-Z]*))+");
+    }
+
+    @AssertTrue(message = "Проверочный пароль не совпадает с основным")
+    public boolean isPasswordsEqual() {
+        return password != null && password.equals(checkPassword);
+    }
+
+    public void setPasswordsEqual(boolean passwordsEqual) {
+        this.passwordsEqual = passwordsEqual;
     }
 
     private boolean isEmptyStr(String ...str){

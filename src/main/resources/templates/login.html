@@ -4,21 +4,20 @@
       th:include="wrapper :: page">
 <head th:fragment="baseHead(title, links)">
     <title>authorization</title>
-    <link rel="stylesheet" href="login/style.css">
+    <link rel="stylesheet" th:href="@{css/login.css}">
 </head>
 <body>
 
-<form action="" method="POST" th:fragment="content">
+<form th:action="@{/}" method="POST" th:fragment="content" th:object="${authorization}">
     <div class="form-group">
         <label for="username">User Name</label>
-        <input type="text" class="form-control" id="username" name="username" placeholder="Login">
+        <input type="text" th:field="*{login}" class="form-control" id="username" name="username" placeholder="Login">
+        <ins class="col-md-6" th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></ins>
     </div>
-<!--        <div class="container">-->
-<!--            <ins class="col-md-6" style="color: red">{{ err }}</ins>-->
-<!--        </div>-->
     <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+        <input th:field="*{password}" type="password" class="form-control" id="password" name="password" placeholder="Password">
+        <ins class="col-md-6" style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></ins>
     </div>
     <div class="buttons_in">
         <button type="submit" class="btn btn-outline-success">Log In</button>

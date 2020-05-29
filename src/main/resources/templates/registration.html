@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:include="wrapper :: page">
+<head th:fragment="baseHead(title, links)">
+    <title>registration</title>
+    <link rel="stylesheet" th:href="@{css/registration.css}">
+</head>
+<body>
+
+<form th:action="@{/register}" method="POST" th:fragment="content" th:object="${registerForm}">
+    <div class="form-group">
+        <label for="username">Name</label>
+        <input th:field="*{name}" type="text" class="form-control" id="username" name="username" placeholder="User Name">
+        <ins class="col-md-6" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></ins>
+    </div>
+    <div class="form-group">
+        <label for="userSurname">Surname</label>
+        <input th:field="*{surname}" type="text" class="form-control" id="userSurname" name="userSurname" placeholder="User Surname">
+        <ins class="col-md-6" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></ins>
+    </div>
+    <div class="form-group">
+        <label for="userPatronymic">Patronymic</label>
+        <input th:field="*{patronymic}"  type="text" class="form-control" id="userPatronymic" name="userPatronymic" placeholder="User Patronymic">
+        <ins class="col-md-6" th:if="${#fields.hasErrors('patronymic')}" th:errors="*{patronymic}"></ins>
+    </div>
+    <div class="form-group">
+        <label for="userLogin">Login</label>
+        <input th:field="*{login}" type="text" class="form-control" id="userLogin" name="userLogin" placeholder="User Login">
+        <ins class="col-md-6" th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></ins>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input th:field="*{password}"  type="password" class="form-control" id="password" name="password" placeholder="Password">
+        <ins class="col-md-6" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></ins>
+    </div>
+    <div class="form-group">
+        <label for="chk_password">Password again</label>
+        <input th:field="*{checkPassword}" type="password" class="form-control" id="chk_password" name="chk_password" placeholder="Check password">
+        <ins class="col-md-6" th:if="${#fields.hasErrors('passwordsEqual')}" th:errors="*{passwordsEqual}"></ins>
+    </div>
+    <div class="buttons_in">
+        <button type="submit" class="btn btn-outline-success">Sign In</button>
+        <button type="reset" class="btn btn-outline-secondary" id="secondBTN">Reset</button>
+    </div>
+</form>
+
+</body>
+</html>
