@@ -1,8 +1,8 @@
-package server.dto;
+package org.cypherpage.spring_page.dto;
 
+import org.cypherpage.spring_page.dto.exceptions.DtoErrorCode;
+import org.cypherpage.spring_page.dto.exceptions.DtoException;
 import org.junit.jupiter.api.Test;
-import server.dto.exceptions.DtoErrorCode;
-import server.dto.exceptions.DtoException;
 
 import static org.junit.jupiter.api.Assertions.*;
 

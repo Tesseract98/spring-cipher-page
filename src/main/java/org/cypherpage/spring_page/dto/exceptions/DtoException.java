@@ -1,4 +1,4 @@
-package server.dto.exceptions;
+package org.cypherpage.spring_page.dto.exceptions;
 
 public class DtoException extends Throwable {
     private DtoErrorCode dtoErrorCode;
