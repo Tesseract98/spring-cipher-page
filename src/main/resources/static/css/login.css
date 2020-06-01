@@ -1,45 +1,44 @@
 body{
+    background: linear-gradient(rgba(250,255,255,0.85), rgba(250,255,255,0.85)),
+    url(https://writercenter.ru/uploads/images/00/26/20/2017/11/20/98b683-big.jpg),
+    no-repeat center fixed;
+    background-size: 100%;
     background-color: LightBlue;
 }
 
 @media only screen and (min-device-width : 300px) and (max-device-width : 480px){
     form{
-        margin: 50% 25% 100px 25%;
+        margin: 20% 25% 100px 33%;
+    }
+    .buttons_in{
+    	padding: 0% 0% 0% 5%;
     }
 }
 
 @media only screen and (min-device-width : 480px) and (max-device-width : 860px){
     form{
-        margin: 25% 25% 100px 25%;
-    }
-    .buttons_in{
-    	padding: 0% 0% 0% 15%;
-
-    }
-
-    #secondBTN{
-    	margin-left: 10px;
-    }
-
-    #Registration{
-    	margin-left: 10px;
+        margin: 15% 25% 100px 33%;
     }
 }
 
 @media only screen and (min-device-width : 860px) and (max-device-width : 1800px){
     form{
-        margin: 13% 25% 100px 25%;
+        margin: 13% 25% 100px 33%;
     }
 }
 
 @media only screen and (min-device-width : 1800px){
     form{
-        margin: 9% 25% 100px 25%;
+        margin: 9% 25% 100px 33%;
     }
 }
 
+form{
+    width: 400px;
+}
+
 .buttons_in{
-	padding: 0% 0% 0% 15%;
+	padding: 0% 0% 0% 10%;
 }
 
 #secondBTN{

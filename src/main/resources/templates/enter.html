@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <title>authorization</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -8,19 +8,18 @@
 </head>
 <body>
 
-<form th:action="@{/}" method="POST" th:object="${authorization}">
+<form th:action="@{/login}" method="POST">
     <div class="form-group">
         <label for="username">User Name</label>
-        <input type="text" th:field="*{login}" class="form-control" id="username" name="username" placeholder="Login">
-        <ins class="col-md-6" th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></ins>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Login">
     </div>
     <div class="form-group">
         <label for="password">Password</label>
-        <input th:field="*{password}" type="password" class="form-control" id="password" name="password" placeholder="Password">
-        <ins class="col-md-6" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></ins>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
     </div>
-    <div class="form-group" th:if="${errorMessage != null}">
-        <ins class="col-md-6" th:text="${errorMessage}"></ins>
+    <div style="margin-bottom: 10px">
+        <ins class="col-md-6" style="color: Red" th:if="${param.error}">Invalid username and password.</ins>
+        <ins class="col-md-6" style="color: DarkGreen"  th:if="${param.logout}">You have been logged out.</ins>
     </div>
     <div class="buttons_in">
         <button type="submit" class="btn btn-outline-success">Log In</button>

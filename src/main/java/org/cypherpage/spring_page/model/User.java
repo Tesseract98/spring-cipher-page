@@ -1,10 +1,12 @@
 package org.cypherpage.spring_page.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "user", indexes = {
-        @Index(columnList = "login,password", name = "login_password_idx")
+        @Index(columnList = "login,password", name = "login_password_idx"),
+        @Index(columnList = "login", name = "login_idx")
 })
 public class User {
     @Id
@@ -13,8 +15,16 @@ public class User {
     private String name;
     private String surname;
     private String patronymic;
+
+    @Column(unique = true)
     private String login;
     private String password;
+    private boolean active;
+
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.LAZY)
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
+    private Set<Role> roles;
 
     public User() {
     }
@@ -73,6 +83,22 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
 }

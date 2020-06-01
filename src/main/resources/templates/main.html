@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:include="wrapper :: page">
+<head th:fragment="baseHead(title, links)">
+    <title>main</title>
+    <link rel="stylesheet" th:href="@{css/main.css}">
+</head>
+<body>
+
+<div th:fragment="content" id="welcome_div">
+    <h1>Encoder project</h1>
+    <p>web pages</p>
+    <button type="button" class="btn btn-outline-info" onClick="location.href='/register'">На страницу регистрации</button>
+    <button type="button" class="btn btn-outline-success" onClick="location.href='/login'">На страницу авторизации</button>
+</div>
+
+</body>
+</html>
