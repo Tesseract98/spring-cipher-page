@@ -1,0 +1,38 @@
+body{
+    background-color: LightBlue;
+}
+
+@media only screen and (min-device-width : 300px) and (max-device-width : 450px){
+    .cipherForm{
+        margin: 50% 15% 70px 10%;
+    }
+}
+
+@media only screen and (min-device-width : 450px) and (max-device-width : 600px){
+    .cipherForm{
+        margin: 25% 15% 70px 10%;
+    }
+}
+
+@media only screen and (min-device-width : 600px) and (max-device-width : 760px){
+    .cipherForm{
+        margin: 13% 15% 70px 10%;
+    }
+}
+
+@media only screen and (min-device-width : 760px){
+    .cipherForm{
+        margin: 1% 15% 70px 10%;
+    }
+}
+
+.form-control{
+    padding: 5px 10px 150px 10px;
+    resize: none;
+    background-color: #98FB98;
+}
+
+.button_position{
+    float: right;
+    margin: 0px 5px 5px 0px;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:include="wrapper :: page">
+<head th:fragment="baseHead(title, links)">
+    <title>Cipher</title>
+    <link rel="stylesheet" th:href="@{css/cipher.css}">
+</head>
+<body>
+
+<div th:fragment="content">
+    <form th:action="@{cipher}" method="POST" class="cipherForm">
+        <br>
+        <div class="button_position">
+            <button class="btn btn-primary" type="submit" name="submit" value="0">Cipher</button>
+            <button class="btn btn-secondary" type="submit" name="reset" value="0">Clear</button>
+        </div>
+        <div class="form-group">
+            <label for="StartText">Enter start text</label>
+            <textarea id="StartText" class="form-control" rows="3" name="decipherText" th:text="${decipherText}"></textarea>
+        </div>
+        <hr>
+        <div class="button_position">
+            <button class="btn btn-primary" type="submit" name="submit" value="1">Decipher</button>
+            <button class="btn btn-secondary" type="submit" name="reset"  value="1">Clear</button>
+        </div>
+        <div class="form-group">
+            <label for="CipherTxt">Enter cipher text</label>
+            <textarea id = "CipherTxt" class="form-control" rows="3" name="cipherText" th:text="${cipherText}"></textarea>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
