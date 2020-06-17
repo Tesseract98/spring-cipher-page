@@ -1,4 +1,4 @@
-package org.cypherpage.spring_page.dto;;
+package org.cypherpage.spring_page.dto;
 
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;

@@ -60,50 +60,50 @@ public class RegistrationDtoResponse {
         this.passwordsEqual = passwordsEqual;
     }
 
-    private boolean isEmptyStr(String ...str){
+    private boolean isEmptyStr(String... str) {
         return Stream.of(str).anyMatch(String::isEmpty);
     }
 
-    private boolean checkNameSurname(String str){
+    private boolean checkNameSurname(String str) {
         return str.length() < 2 || str.matches(digitsRegex);
     }
 
-    private boolean checkPatronymic(String str){
-        if(!str.isEmpty()){
+    private boolean checkPatronymic(String str) {
+        if (!str.isEmpty()) {
             return str.length() < 3 || str.matches(digitsRegex);
         }
         return false;
     }
 
-    private boolean checkLogin(String str){
+    private boolean checkLogin(String str) {
         return str.length() < 5;
     }
 
-    private boolean checkPassword(String str){
+    private boolean checkPassword(String str) {
         Matcher matcher = pattern.matcher(str);
         return str.length() < 6 || !matcher.find();
     }
 
     public void validate() throws DtoException {
-        if(isEmptyStr(name, surname, login, password)){
+        if (isEmptyStr(name, surname, login, password)) {
             throw new DtoException(DtoErrorCode.EMPTY_FIELD);
         }
-        if(checkNameSurname(name)){
+        if (checkNameSurname(name)) {
             throw new DtoException(DtoErrorCode.WRONG_USER_NAME);
         }
-        if(checkNameSurname(surname)){
+        if (checkNameSurname(surname)) {
             throw new DtoException(DtoErrorCode.WRONG_USER_SURNAME);
         }
-        if(checkPatronymic(patronymic)){
+        if (checkPatronymic(patronymic)) {
             throw new DtoException(DtoErrorCode.WRONG_USER_PATRONYMIC);
         }
-        if(checkLogin(login)){
+        if (checkLogin(login)) {
             throw new DtoException(DtoErrorCode.WRONG_USER_LOGIN);
         }
-        if(checkPassword(password)){
+        if (checkPassword(password)) {
             throw new DtoException(DtoErrorCode.WRONG_USER_PASSWORD);
         }
-        if(!password.equals(checkPassword)){
+        if (!password.equals(checkPassword)) {
             throw new DtoException(DtoErrorCode.WRONG_USER_CHK_PASSWORD);
         }
     }
@@ -156,7 +156,7 @@ public class RegistrationDtoResponse {
         this.checkPassword = checkPassword;
     }
 
-    public User createUser(){
+    public User createUser() {
         return new User(name, surname, patronymic, login, password);
     }
 

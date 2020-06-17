@@ -24,18 +24,18 @@ public class RegistrationController {
     UserRepository userRepo;
 
     @GetMapping
-    public String getPage(Model model){
+    public String getPage(Model model) {
         RegistrationDtoResponse registrationDtoResponse = new RegistrationDtoResponse();
         model.addAttribute("registerForm", registrationDtoResponse);
         return "registration";
     }
 
     @PostMapping
-    public String registerUser(@Valid @ModelAttribute("registerForm")RegistrationDtoResponse response, BindingResult result, Model model){
-        if(result.hasErrors()){
+    public String registerUser(@Valid @ModelAttribute("registerForm") RegistrationDtoResponse response, BindingResult result, Model model) {
+        if (result.hasErrors()) {
             return "registration";
         }
-        if(userRepo.findByLogin(response.getLogin()) != null){
+        if (userRepo.findByLogin(response.getLogin()) != null) {
             model.addAttribute("errorMessage", "данный логин уже используется");
             return "registration";
         }
