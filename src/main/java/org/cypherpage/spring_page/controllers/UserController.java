@@ -1,6 +1,6 @@
 package org.cypherpage.spring_page.controllers;
 
-import org.cypherpage.spring_page.repo.UserRepository;
+import org.cypherpage.spring_page.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController {
 
     @Autowired
-    private UserRepository userRepo;
+    private UserService userService;
 
     @GetMapping
     public String printAllDB(Model model) {
-        model.addAttribute("users", userRepo.findAll());
+        model.addAttribute("users", userService.findAll());
         return "userTable";
     }
 
